@@ -8,7 +8,7 @@ import PetDetail from './PetDetail';
 
 import SAMPLE_DOGS from '../data/dogs.json'; //a sample list of dogs (model)
 
-import { Routes, Route, Navigate} from 'react-router-dom';
+import  {Routes, Route, Navigate, Link} from 'react-router-dom';
 
 function App(props) {
 
@@ -18,7 +18,7 @@ function App(props) {
     <div>
       <header className="jumbotron py-4 mb-4">
         <div className="container">
-          <h1>Adopt a Pet</h1>
+          <h1><Link to="/adopt">Adopt a Pet</Link></h1>
         </div>
       </header>
     
@@ -33,6 +33,7 @@ function App(props) {
               <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/adopt" element={<PetPage />}>
                 <Route index element={<PetList pets={pets} />} />
+                <Route path=":petName" element={<PetDetail />} />
               </Route>
               <Route path="/" element={<PetList pets={pets} />} />
               <Route path="*" element={<Navigate to="/adopt" replace />} />

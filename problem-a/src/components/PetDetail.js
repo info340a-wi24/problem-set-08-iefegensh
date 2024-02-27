@@ -5,11 +5,13 @@ import Carousel from 'react-bootstrap/Carousel';
 import _ from 'lodash';
 
 import SAMPLE_DOGS from '../data/dogs.json'; //a sample list of dogs (model)
+import { useParams } from 'react-router-dom';
 
 function PetDetail(props) {
 
   const petNameString = ''; //REPLACE THIS WITH CORRECT VALUE
-
+  const { petName } = useParams();
+  
   //pretend we loaded external data    
   let pet =  _.find(SAMPLE_DOGS, {name: petNameString}); //find pet in data
 
