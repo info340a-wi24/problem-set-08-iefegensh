@@ -9,9 +9,10 @@ import { useParams } from 'react-router-dom';
 
 function PetDetail(props) {
 
-  const petNameString = ''; //REPLACE THIS WITH CORRECT VALUE
+   //REPLACE THIS WITH CORRECT VALUE
+  // const petNameString = "";
   const { petName } = useParams();
-  
+  const petNameString = petName;
   //pretend we loaded external data    
   let pet =  _.find(SAMPLE_DOGS, {name: petNameString}); //find pet in data
 
