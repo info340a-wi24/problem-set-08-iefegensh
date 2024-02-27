@@ -8,6 +8,8 @@ import PetDetail from './PetDetail';
 
 import SAMPLE_DOGS from '../data/dogs.json'; //a sample list of dogs (model)
 
+import { Routes, Route, Navigate} from 'react-router-dom';
+
 function App(props) {
 
   const pets = SAMPLE_DOGS; //pretend this was loaded externally or via prop
@@ -26,7 +28,15 @@ function App(props) {
             <AboutNav />
           </div>
           <div className="col">
-            <PetList pets={pets} />
+            <Routes>
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/adopt" element={<PetPage />}>
+                <Route index element={<PetList pets={pets} />} />
+              </Route>
+              <Route path="/" element={<PetList pets={pets} />} />
+              <Route path="*" element={<Navigate to="/adopt" replace />} />
+            </Routes>
           </div>
         </div>
       </main>
